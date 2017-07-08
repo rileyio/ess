@@ -1,6 +1,6 @@
 ## Guides / Documentation / Usage
 - [`[guide]` Quick install ](#how-to-setup-quick-guide)
-- [`[interactive]` Interactive menu]([[Interactive]])
+- [[Interactive]]
 
 ### How to setup (Quick guide)
 
