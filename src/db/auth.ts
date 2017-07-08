@@ -30,8 +30,8 @@ export default class AuthDB extends Database {
       .where('applications.uuid', '=', appuuid)
       .andWhere('auth.enabled', '=', true)
 
-      console.log(appAuths.length)
-      console.log(appAuths)
+      // console.log(appAuths.length)
+      // console.log(appAuths)
 
     // If there are no results, return false to valid
     if (appAuths.length === 0) return false

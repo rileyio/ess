@@ -6,6 +6,7 @@ import * as Joi from 'joi';
 import * as validator from 'restify-joi-middleware';
 import * as corsMiddleware from 'restify-cors-middleware';
 import * as Middleware from './middleware';
+import ApplicationDB from './db/application';
 import AuthDB from './db/auth';
 import StatsDB from './db/stats';
 
@@ -13,8 +14,9 @@ import StatsDB from './db/stats';
 import StatsController from './controllers/submit';
 
 const app = restify.createServer()
-const statsDB = new StatsDB()
+const appDB = new ApplicationDB()
 const authDB = new AuthDB()
+const statsDB = new StatsDB()
 // const authentication = new Middleware.authenticate(authDB)
 var jobQueueActive = false
 
@@ -30,7 +32,7 @@ app.use(validator())
 app.use(Middleware.authenticate(authDB))
 
 // Setup route controllers
-new StatsController(app, statsDB)
+new StatsController(app, { Application: appDB, Stats: statsDB })
 
 // app.get({
 //   path: '/:id',

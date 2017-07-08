@@ -10,14 +10,18 @@ export function authenticate(authDB: AuthDB) {
     console.log(`
     client: ${authReq.client}
     clientIsES: ${authReq.clientIsES}
+    clientId: ${authReq.clientId}
     submitRequest: ${authReq.submitRequest}
     hasAuthenticationKey: ${authReq.hasAuthenticationKey}
-    authenticationKey: ${authReq.authenticationKey}
+    authenticationKey: ${authReq.authenticationKey.length}
     valid:`, valid)
 
     // INValid, halt auth of request
     if (!valid) return next(new restify.NotAuthorizedError())
-    
+
+    // Ensure machine ID passed
+    if (!authReq.clientId) return next(new restify.NotAuthorizedError())
+
     // Valid, move on
     return next()
   }
@@ -28,6 +32,7 @@ class AuthenticationRequest {
   // Client headers
   public readonly client: string
   public readonly clientIsES: boolean
+  public readonly clientId: string
   // Route
   public readonly submitRequest: boolean
   // App
@@ -49,6 +54,7 @@ class AuthenticationRequest {
     // Auth
     this.hasAuthenticationKey = (req.header('ESS-Auth') !== undefined)
     this.authenticationKey = req.header('ESS-Auth')
+    this.clientId = req.header('ESS-Client-ID')
     // this.validAuthentication = this.validateAuthenticationKey(this.authenticationKey, this.applicationId)
     // this.validateAuthenticationKey(this.authenticationKey, this.applicationId)
     //   .then(console.log)

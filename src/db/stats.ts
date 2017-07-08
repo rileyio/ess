@@ -86,7 +86,7 @@ export default class StatsDB extends Database {
     // Create basic stat entry unique to machine uuid
     let id = await this.db.table(`stats`).insert({
       appid: insert.appid,
-      uuid: insert.stats.uuid,
+      uuid: insert.uuid,
       submitted: this.db.fn.now(),
       updated: this.db.fn.now(),
       checksum: insert.checksum
@@ -113,11 +113,11 @@ export default class StatsDB extends Database {
       .update({ updated: this.db.fn.now() })
   }
 
-  public async getStat(query: { id?: number, uuid?: string }): Promise<Array<ESS.StatsInsert>> {
+  public async getStat(query: { id?: number, uuid?: string, appid?: number }): Promise<Array<ESS.StatsInsert>> {
     return await this.db
       .select('*')
       .from(`stats`)
-      .where({ uuid: query.uuid })
+      .where(query)
   }
 
   public async addJob(job: ESS.QueueJob) {
