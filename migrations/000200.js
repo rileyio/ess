@@ -43,6 +43,7 @@ module.exports.up = async (db) => {
     table.integer('statid')
       .unsigned()
     table.json('raw')
+    table.json('params')
     table.string('type')
   })
 

@@ -21,7 +21,7 @@ export default class StatsController extends Controller {
     let applicationId = req.header('ESS-App')
     let clientId = req.header('ESS-Client-ID')
     // Check if in db
-    console.log('StatsController->looking up:', clientId)
+    console.log('StatsController->looking up:', clientId, applicationId)
     let application = await this.DB.Application.get(applicationId)
     let stat = await this.DB.Stats.getStat({ uuid: clientId, appid: application[0].appid })
     let sum = hasha(JSON.stringify(req.body), { algorithm: 'md5' })
@@ -43,7 +43,8 @@ export default class StatsController extends Controller {
         console.info(`StatsController->Checksums don't match, queued for updating db data, id=${stat[0].id}`)
         await this.DB.Stats.addJob({
           statid: stat[0].id,
-          raw: req.body
+          raw: req.body,
+          params: { appid: application[0].appid }
         })
         // Update stat sum to prevent duplicate job entries submissions
         await this.DB.Stats.updateStatHash(sum, stat[0].id)

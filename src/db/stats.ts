@@ -5,10 +5,6 @@ export default class StatsDB extends Database {
     super()
   }
 
-  private checkDiff<T>(stored: T, _new: T) {
-    return <T>stored === _new
-  }
-
   private async getSubStat<T>(table: string, queryBy: T) {
     return await this.db.table(table).where(queryBy)
   }
@@ -125,7 +121,9 @@ export default class StatsDB extends Database {
       .table(`stats_queue`)
       .insert({
         statid: job.statid,
-        raw: JSON.stringify(job.raw)
+        raw: JSON.stringify(job.raw),
+        type: 'stat-update',
+        params: JSON.stringify(job.params)
       })
   }
 
