@@ -151,14 +151,14 @@ export default class StatsDB extends Database {
 
     // Else, start processing
     for (var index = 0; index < queueItems.length; index++) {
-      var stat = queueItems[index];
-      console.log(`JobQueue->Processing id: ${stat.jobid}`)
-      let raw = <ElectronStats.Stats>JSON.parse(stat.raw)
+      var qItem = queueItems[index];
+      console.log(`JobQueue->Processing id: ${qItem.jobid}`)
+      let raw = <ElectronStats.Stats>JSON.parse(qItem.raw)
 
       await this.updateStatData({
-        id: stat.statid,
+        id: qItem.statid,
         stats: raw
-      }).then(() => this.removeQueueItem(stat.jobid))
+      }).then(() => this.removeQueueItem(qItem.jobid))
     }
 
     return `processed: ${queueItems.length}`

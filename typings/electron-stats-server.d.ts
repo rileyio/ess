@@ -24,7 +24,7 @@ declare namespace ESS {
     statid: number
     raw: string | any
     type?: string
-    params?: string | object
+    params?: string | object | any
   }
 
   interface CLIResponse {
