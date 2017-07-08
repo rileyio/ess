@@ -5,6 +5,7 @@
   "author": "Emma (Riley) Booker",
   "license": "MIT",
   "typings": "./scr/app.d.ts",
+  "repository": "https://github.com/tdmio/ess",
   "scripts": {
     "db:migrate": "knex migrate:latest",
     "db:rollback": "knex migrate:rollback",
@@ -12,7 +13,8 @@
     "gulp:build": "gulp build",
     "test": "mocha ./test/test.js",
     "start": "node ./app/app.js",
-    "start:interactive": "node ./prompt.js"
+    "start:interactive": "node ./prompt.js",
+    "update-wiki": "(git branch -D wiki || true) && git subtree split -b wiki --prefix docs/ && git push -f wiki wiki:master"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
