@@ -18,13 +18,11 @@ services:
 node_js:
   - "stable"
 
-before_script:
+before_install:
   - mysql -e 'create database ess;'
 
-before_install:
+before_script:
   - npm --version
-
-install:
   - npm install
   - npm run gulp:build
   - npm run db:migrate
