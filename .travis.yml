@@ -26,7 +26,5 @@ before_install:
 
 install:
   - npm install
-
-before_script:
   - npm run gulp:build
   - npm run db:migrate
