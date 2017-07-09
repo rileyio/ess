@@ -18,20 +18,8 @@ export class Env extends Prompt {
     ]).then(answer => { return answer.confirm })
   }
 
-  /**
-   * setup - New Install
-   */
-  public async setup(): Promise<ESS.ClIDotEnvSetupResponse> {
-    let answers = await inquirer.prompt([
-      {
-        name: 'DB_TYPE',
-        type: 'list',
-        message: 'Database type',
-        choices: [
-          'mysql',
-          'sqlite'
-        ],
-      },
+  private async mysql() {
+    return await inquirer.prompt([
       {
         name: 'DB_HOST',
         type: 'input',
@@ -61,6 +49,46 @@ export class Env extends Prompt {
         message: `Database user's password`
       }
     ])
+  }
+
+  private async sqlite() {
+    return await inquirer.prompt([
+      {
+        name: 'DB_HOST',
+        type: 'input',
+        message: 'Database filename'
+      }
+    ])
+  }
+
+  /**
+   * setup - New Install
+   */
+  public async setup(): Promise<ESS.ClIDotEnvSetupResponse> {
+    let answers = {}
+    let answerDBType = await inquirer.prompt([
+      {
+        name: 'DB_TYPE',
+        type: 'list',
+        message: 'Database type (number appended is for sub module)',
+        choices: [
+          'mysql2',
+          'sqlite3'
+        ],
+      }
+    ])
+
+    switch (answerDBType.DB_TYPE) {
+      case 'mysql2':
+        let _mysqlAnswers = await this.mysql()
+        answers = Object.assign(_mysqlAnswers, answerDBType)
+        break;
+      case 'sqlite3':
+        let _sqliteAnswers = await this.sqlite()
+        answers = Object.assign(_sqliteAnswers, answerDBType)
+        break;
+    }
+
     let dotenv = new DotEnv()
 
     // Check if .env already exists
