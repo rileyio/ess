@@ -1,12 +1,17 @@
 <h1 align="center">
-  <img src="ess-logo.svg" width="400px">
+  <img src="https://rawgit.com/tdmio/ess/master/ess-logo.svg" width="400px">
 
   electron-stats-server
 </h1>
 <p align="center">
-  <a href="https://travis-ci.org/tdmio/ess"><img src="https://img.shields.io/travis/tdmio/ess/master.svg?style=flat-square"></a>
-  <a href="https://www.npmjs.com/package/electron-stats-server"><img src="https://img.shields.io/npm/v/electron-stats-server.svg?style=flat-square"></a>
-  <a href="github.com/tdmio/ess/wiki"><img src="https://img.shields.io/badge/GitHub-Wiki-blue.svg?style=flat-square"></a>
+  <a href="https://travis-ci.org/tdmio/ess">
+  <img src="https://img.shields.io/travis/tdmio/ess/master.svg?style=flat-square"></a>
+  <a href="https://www.npmjs.com/package/electron-stats-server">
+  <img src="https://img.shields.io/npm/v/electron-stats-server.svg?style=flat-square"></a>
+  <a href="https://github.com/tdmio/ess/wiki">
+  <img src="https://img.shields.io/badge/GitHub-Wiki-blue.svg?style=flat-square"></a>
+  <a href="https://github.com/tdmio/electron-stats">
+  <img src="https://img.shields.io/badge/client-electron--stats-brightgreen.svg?style=flat-square"></a>
 </p>
 
 ## What is ESS?
