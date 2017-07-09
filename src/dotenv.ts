@@ -33,11 +33,11 @@ export default class DotEnv {
     return fs.writeFileSync(file, data)
   }
 
-  public generateDotEnv() {
+  public generateDotEnv(): void {
     return this.writeFile(this.dotEnv, this.readFile(this.dotEnvTemplate))
   }
 
-  public updateFile(file: string, data: Object[], updateMode: boolean) {
+  public updateFile(file: string, data: Object[], updateMode: boolean): void {
     var fileContents = this.readFile(file)
 
     // Loop through updates array & perform replaces

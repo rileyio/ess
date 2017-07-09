@@ -1,0 +1,32 @@
+language: node_js
+sudo: false
+
+env:
+  matrix:
+    - CXX=g++-4.8 DB_HOST=127.0.0.1 DB_PORT=3306 DB_DBNAME=pgsjs_test DB_USER=root DB_PASS=
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+
+services:
+  - mysql
+
+node_js:
+  - "stable"
+
+before_script:
+  - mysql -e 'create database ess;'
+
+before_install:
+  - npm --version
+
+install:
+  - npm install
+
+before_script:
+  - npm run gulp:build
+  - npm run db:migrate

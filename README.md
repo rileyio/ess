@@ -70,14 +70,16 @@ Run the interactive setup to configure the application using the following
 command, this will guide you through setting up and ensuring all required
 settings are set.
 
-```
-npm run start:interactive
-```
-
 Make sure to migrate (setup) your database
 
 ```
 npm run db:migrate
+
+```
+
+Access the interactive menu using:
+```
+npm run start:interactive
 ```
 
 After completing the setup start the application (probably recommended to use

@@ -7,15 +7,14 @@ export default class AuthDB extends Database {
   }
 
   /**
-   * 
+   * Add authentication key for application
    * 
    * @param {number} appid
    * @param {string} key random & hashed (hash stored)
    * @param {number} expires in number of days
    * @memberof AuthDB
    */
-  public async add(appid: number, key: string, expires: number) {
-    console.log(arguments)
+  public async add(appid: number, key: string, expires: number): Promise<any> {
     let expiryDate = new Date(new Date().setDate(new Date().getDate() + expires))
     await this.db
       .table(`auth`)
@@ -30,8 +29,7 @@ export default class AuthDB extends Database {
       .where('applications.uuid', '=', appuuid)
       .andWhere('auth.enabled', '=', true)
 
-      // console.log(appAuths.length)
-      // console.log(appAuths)
+    // console.log(appAuths, appAuths.length)
 
     // If there are no results, return false to valid
     if (appAuths.length === 0) return false
@@ -39,7 +37,7 @@ export default class AuthDB extends Database {
     // Verify key against salted hash
     if (appAuths.length > 1) return this.validateMultiple(appAuths, key)
     // Verify key against salted hash (single)
-    if (appAuths.length === 1) return this.validateSingle(appAuths, key)
+    if (appAuths.length === 1) return this.validateSingle(appAuths[0], key)
   }
 
   private validateMultiple(array: Array<any>, key: string): boolean {
