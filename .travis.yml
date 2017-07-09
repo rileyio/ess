@@ -22,7 +22,6 @@ before_install:
   - mysql -e 'create database ess;'
 
 before_script:
-  - npm --version
-  - npm install
-  - npm run gulp:build
-  - npm run db:migrate
+  - yarn
+  - yarn run gulp:build
+  - yarn run db:migrate

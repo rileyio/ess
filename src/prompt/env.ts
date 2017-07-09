@@ -54,7 +54,7 @@ export class Env extends Prompt {
   private async sqlite() {
     return await inquirer.prompt([
       {
-        name: 'DB_HOST',
+        name: 'DB_NAME',
         type: 'input',
         message: 'Database filename'
       }
