@@ -3,7 +3,7 @@ sudo: false
 
 env:
   matrix:
-    - CXX=g++-4.8 DB_HOST=127.0.0.1 DB_PORT=3306 DB_DBNAME=ess DB_USER=root DB_PASS=
+    - CXX=g++-4.8 TEST_ISTRAVIS=true DB_HOST=127.0.0.1 DB_PORT=3306 DB_NAME=ess DB_USER=root DB_PASS=
 
 addons:
   apt:
