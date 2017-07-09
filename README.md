@@ -1,9 +1,18 @@
-# electron-stats-server (ESS)
+<h1 align="center">
+  <img src="ess-logo.svg" width="400px">
+
+  electron-stats-server
+</h1>
+<p align="center">
+  <a href="https://travis-ci.org/tdmio/ess"><img src="https://img.shields.io/travis/tdmio/ess/master.svg?style=flat-square"></a>
+  <a href="https://www.npmjs.com/package/electron-stats-server"><img src="https://img.shields.io/npm/v/electron-stats-server.svg?style=flat-square"></a>
+  <a href="github.com/tdmio/ess/wiki"><img src="https://img.shields.io/badge/GitHub-Wiki-blue.svg?style=flat-square"></a>
+</p>
 
 ## What is ESS?
 
 ESS for short is a self hosted application/system profile collection and reporting endpoint 
-service primarily developed for the [electron-stats] collector/module. This was developed for
+service primarily developed for the [`[electron-stats]`](https://github.com/tdmio/electron-stats) collector/module. This was developed for
 tracking electron application installs and the systems being used for a better understanding 
 of real world application(s) usage by users. ESS was designed with the intent to only collect 
 non-user identifying information.
