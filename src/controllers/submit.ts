@@ -14,7 +14,7 @@ export default class StatsController extends Controller {
 
     this.server.post({
       path: '/submit', validation: Stats.params
-    }, (req, res, next) => this.postSubmit(req, res, next))
+    }, (req: restify.Request, res: restify.Response, next: restify.Next) => this.postSubmit(req, res, next))
   }
 
   private async postSubmit(req: restify.Request, res: restify.Response, next: restify.Next) {

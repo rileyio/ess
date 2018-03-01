@@ -27,7 +27,7 @@ const cors = corsMiddleware({
 
 app.pre(cors.preflight)
 app.use(cors.actual)
-app.use(restify.bodyParser())
+app.use(restify.plugins.bodyParser())
 app.use(validator())
 app.use(Middleware.authenticate(authDB))
 

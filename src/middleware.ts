@@ -1,4 +1,5 @@
 import * as restify from 'restify';
+import * as restifyErrors from 'restify-errors';
 import AuthDB from './db/auth';
 
 export function authenticate(authDB: AuthDB) {
@@ -17,10 +18,10 @@ export function authenticate(authDB: AuthDB) {
     valid:`, valid)
 
     // INValid, halt auth of request
-    if (!valid) return next(new restify.NotAuthorizedError())
+    if (!valid) return next(new restifyErrors.NotAuthorizedError())
 
     // Ensure machine ID passed
-    if (!authReq.clientId) return next(new restify.NotAuthorizedError())
+    if (!authReq.clientId) return next(new restifyErrors.NotAuthorizedError())
 
     // Valid, move on
     return next()

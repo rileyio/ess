@@ -17,7 +17,7 @@ services:
   - mysql
 
 node_js:
-  - "stable"
+  - "lts/*"
 
 before_install:
   - mysql -e 'create database ess;'
