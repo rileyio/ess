@@ -16,6 +16,8 @@
 
 ## What is ESS?
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tdmio/ess.svg)](https://greenkeeper.io/)
+
 ESS for short is a self hosted application/system profile collection and reporting endpoint 
 service primarily developed for the [`[electron-stats]`](https://github.com/tdmio/electron-stats) collector/module. This was developed for
 tracking electron application installs and the systems being used for a better understanding 
