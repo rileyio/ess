@@ -11,7 +11,7 @@
     "db:rollback": "knex migrate:rollback",
     "gulp:live": "gulp dev",
     "gulp:build": "gulp build",
-    "test": "mocha ./tests/test.js",
+    "test": "mocha ./tests/test.js --exit",
     "start": "node ./app/app.js",
     "start:interactive": "node ./prompt.js",
     "wiki:setup": "git remote add wiki git@github.com:tdmio/ess.wiki.git",
