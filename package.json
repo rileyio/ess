@@ -18,7 +18,7 @@
     "wiki:update": "(git branch -D wiki || true) && git subtree split -b wiki --prefix docs/ && git push -f wiki wiki:master"
   },
   "dependencies": {
-    "dotenv": "^5.0.1",
+    "dotenv": "^6.0.0",
     "hasha": "^3.0.0",
     "inquirer": "^5.1.0",
     "joi": "^13.1.2",
