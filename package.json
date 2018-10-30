@@ -35,7 +35,7 @@
   "devDependencies": {
     "@types/dotenv": "^4.0.0",
     "@types/inquirer": "0.0.38",
-    "@types/joi": "^13.0.5",
+    "@types/joi": "^14.0.0",
     "@types/knex": "0.14.8",
     "@types/restify": "^5.0.7",
     "@types/restify-errors": "^4.3.1",
