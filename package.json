@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "dotenv": "^5.0.1",
-    "hasha": "^3.0.0",
+    "hasha": "^4.0.0",
     "inquirer": "^5.1.0",
     "joi": "^13.1.2",
     "knex": "^0.14.4",
